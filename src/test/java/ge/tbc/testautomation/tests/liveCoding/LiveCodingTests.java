@@ -4,6 +4,8 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import ge.tbc.testautomation.steps.Tbc.BlogSteps;
+import ge.tbc.testautomation.utils.RetryAnalyzer;
+import ge.tbc.testautomation.utils.RetryCount;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -30,7 +32,8 @@ public class LiveCodingTests {
         WebDriverManager.chromedriver().setup();
         open("");
     }
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @RetryCount(count = 2)
     public void languageSwitchToEnglish() {
         // TODO: Find the correct selector for language switch
         $("tbcx-language-select[formcontrolname = 'currentLanguage']").click(); // FIXME: placeholder
