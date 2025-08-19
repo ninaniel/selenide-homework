@@ -12,4 +12,7 @@ public class Constants {
     public static final String MICROSOFT_STORE = "Microsoft Store";
     public static final String APPLE_STORE = "Apple Store";
     public static final String GOOGLE_PLAY = "Google Play";
+
+    //SWOOP
+    public static final String SWOOP_BASE_URL = "https://swoop.ge";
 }
