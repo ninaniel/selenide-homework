@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="SauceDemoSuite">-->
+<!--    <test name="checkoutFlow">-->
+<!--        <classes>-->
+<!--            <class name="ge.tbc.testautomation.tests.TestNGPracticing">-->
+<!--                <methods>-->
+<!--                    <include name="addToCartTest"/>-->
+<!--                    <include name="makePaymentTest"/>-->
+<!--                    <include name="proceedToCheckoutTest"/>-->
+
+<!--                    <include name="validateImageSizes"/>-->
+<!--                    <include name="sortOffers"/>-->
+<!--                    <include name="validateBurgerMenu"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--</suite>-->
+
+<suite name="CrossBrowserSuite" parallel="tests" thread-count="2">
+    <test name="ChromeTest">
+        <parameter name="browserType" value="chrome"/>
+        <classes>
+            <class name="ge.tbc.testautomation.tests.TestNGPracticing"/>
+        </classes>
+    </test>
+
+    <test name="FirefoxTest">
+        <parameter name="browserType" value="firefox"/>
+        <classes>
+            <class name="ge.tbc.testautomation.tests.TestNGPracticing"/>
+        </classes>
+    </test>
+</suite>
