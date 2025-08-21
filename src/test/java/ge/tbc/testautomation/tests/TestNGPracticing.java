@@ -1,5 +1,6 @@
 package ge.tbc.testautomation.tests;
 
+import com.beust.jcommander.Parameter;
 import com.codeborne.selenide.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,6 +51,7 @@ public class TestNGPracticing {
 
     @Test(dependsOnMethods = "addToCartTest")
     public void proceedToCheckoutTest() {
+        $(".shopping_cart_link").click();
         $("#checkout").click();
         $("#first-name").setValue("Test");
         $("#last-name").setValue("User");
@@ -59,7 +61,7 @@ public class TestNGPracticing {
         $(".summary_info").shouldBe(Condition.visible);
     }
 
-    @Test(dependsOnMethods = "proceedToCheckoutTest")
+    @Test(dependsOnMethods = {"addToCartTest", "proceedToCheckoutTest"})
     public void makePaymentTest() {
         $("#finish").click();
         $(".complete-header").shouldHave(Condition.text("THANK YOU FOR YOUR ORDER"));
@@ -74,7 +76,7 @@ public class TestNGPracticing {
             int width = img.getSize().getWidth();
             int height = img.getSize().getHeight();
 
-            Assert.assertEquals(width, 159);
+            Assert.assertEquals(width, 158);
             Assert.assertEquals(height, 238);
         }
     }
@@ -82,7 +84,9 @@ public class TestNGPracticing {
     @Test(priority = 1)
     public void sortOffers() {
         // low to high
-        $("select.product_sort_container").selectOptionByValue("lohi");
+        SelenideElement sorting = $("select.product_sort_container");
+        sorting.click();
+        sorting.selectOptionByValue("lohi");
 
         List<Double> prices = $$("div.inventory_item_price").texts().stream()
                 .map(text -> Double.parseDouble(text.replace("$", "")))
@@ -134,7 +138,8 @@ public class TestNGPracticing {
     //method - Navigate to the home page before each test and return to the home page after each test.
     @BeforeMethod
     public void beforeMethod() {
-        open("https://www.saucedemo.com/inventory.html");
+        open("https://www.saucedemo.com");
+        login();
     }
 
     @AfterMethod

@@ -10,9 +10,9 @@
 <!--                    <include name="makePaymentTest"/>-->
 <!--                    <include name="proceedToCheckoutTest"/>-->
 
-<!--                    <exclude name="validateImageSizes"/>-->
-<!--                    <exclude name="sortOffers"/>-->
-<!--                    <exclude name="validateBurgerMenu"/>-->
+<!--                    <include name="validateImageSizes"/>-->
+<!--                    <include name="sortOffers"/>-->
+<!--                    <include name="validateBurgerMenu"/>-->
 <!--                </methods>-->
 <!--            </class>-->
 <!--        </classes>-->
