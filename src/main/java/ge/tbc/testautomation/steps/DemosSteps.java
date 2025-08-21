@@ -72,6 +72,7 @@ public class DemosSteps {
 
         return this;
     }
+    //https://github.com/ninaniel/selenide-homework/pulls
 
     // 7) Validate links navigate to correct sections
     public DemosSteps validateSectionLinksNavigation() {
